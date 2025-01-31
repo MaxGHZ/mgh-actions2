@@ -1,0 +1,29 @@
+name: Workflow Exercise 1
+on: push
+jobs:
+  testing:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download Code
+        uses: actions/checkout@v4
+      - name: Install NodeJs
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Run Lint
+        run: npm run lint
+      - name: Run Test
+        run: npm run test
+  Deployment:
+    needs: testing
+    runs-on: ubuntu
+    steps:
+      - name: Download Code
+        uses: actions/checkout@v4
+      - name: Install NodeJs
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Deployment
+        run: npm run build
+
