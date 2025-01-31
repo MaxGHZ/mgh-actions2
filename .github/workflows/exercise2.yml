@@ -1,0 +1,10 @@
+name: Workflow Execirse 2
+on:
+  issues:
+    types: [opened, edited, milestoned]
+jobs:
+    event-details:
+      runs-on: ubuntu-latest
+      steps:
+      - name: Output Event Details
+        run: echo ${{ github }}
